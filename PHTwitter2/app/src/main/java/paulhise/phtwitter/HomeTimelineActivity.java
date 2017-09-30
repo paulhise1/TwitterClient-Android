@@ -23,7 +23,6 @@ public class HomeTimelineActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Twitter.initialize(this);
 
         Log.d(TAG, "onCreate: Twitter Instance - " + Twitter.getInstance());
