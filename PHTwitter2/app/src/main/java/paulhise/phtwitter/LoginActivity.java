@@ -1,5 +1,6 @@
 package paulhise.phtwitter;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void success(Result<TwitterSession> result) {
                 Log.d(TAG, "success logging into Twitter: " + result);
+                finish();
             }
 
             @Override
@@ -40,5 +42,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        loginButton.onActivityResult(requestCode, resultCode, data);
     }
 }
