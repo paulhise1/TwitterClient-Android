@@ -95,9 +95,36 @@ public class HomeTimelineActivity extends AppCompatActivity {
     }
 
     private void updateViewWithList(Timeline<Tweet> tweets) {
-        TweetTimelineListAdapter adapter = new TweetTimelineListAdapter(this, tweets);
-        tweetsListView.setAdapter(adapter);
 
+        final HomeTimelineActivity homeTimelineActivityContext = this;
+
+        TweetTimelineListAdapter adapter = new TweetTimelineListAdapter(this, tweets){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent) {
+
+                View view = super.getView(position, convertView, parent);
+
+                final Tweet currentTweet = this.getItem(position);
+
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        PHTweet.selectedTweet = currentTweet;
+
+                        Intent goToTweetDetailIntent = new Intent(homeTimelineActivityContext, TweetDetailActivity.class);
+
+                        startActivity(goToTweetDetailIntent);
+
+
+                    }
+                });
+
+                return view;
+            }
+        };
+
+        tweetsListView.setAdapter(adapter);
     }
 
 }

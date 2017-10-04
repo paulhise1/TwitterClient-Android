@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">PHTwitter</string>
-
+    <string name="view_feed_button_text">View Feed</string>
 </resources>
